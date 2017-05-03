@@ -24,5 +24,8 @@ files_dir<-"C:/Users/stubbsrw/Documents/thesis_files/"
                racecat==0 & # all races
                sexcat==0 & # both sexes together
                iprcat==0,] # all income levels
-  saihe<-saihe[,list(year,cnty,uninsured=PCTUI)]
+  saihe<-saihe[,list(year,cnty,uninsured=as.numeric(PCTUI))]
+  saihe[,cnty:=as.integer(cnty)]
   
+  
+  save(saihe,file=paste0(files_dir,"saihe.rdata"))
